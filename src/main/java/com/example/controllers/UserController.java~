@@ -39,22 +39,13 @@ public class UserController {
         newUser.setEmail(scanner.nextLine());
 
         System.out.print("Enter Role (ADMIN/USER): ");
-        String roleName = scanner.nextLine().toUpperCase();
-        int roleId = userService.getRoleIdByName(roleName);
+        Role role = new Role();
+        role.setRoleName(scanner.nextLine());
+        newUser.setRole(role);
 
-        if (roleId != -1) {
-            Role role = new Role();
-            role.setRoleId(roleId);
-            role.setRoleName(roleName);
-            newUser.setRole(role);
-
-            userService.createUser(newUser);
-            System.out.println("User berhasil ditambahkan.");
-        } else {
-            System.out.println("Role tidak ditemukan.");
-        }
+        userService.createUser(newUser);
+        System.out.println("User berhasil ditambahkan.");
     }
-
 
     public void editUser() {
         System.out.print("Enter User ID to edit: ");

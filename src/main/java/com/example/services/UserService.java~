@@ -46,22 +46,6 @@ public class UserService {
         }
     }
 
-    public int getRoleIdByName(String roleName) {
-        int roleId = -1; // Nilai default jika role tidak ditemukan
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "SELECT role_id FROM role WHERE role_name = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, roleName);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                roleId = rs.getInt("role_id");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return roleId;
-    }
-
     public User getUserById(int userId) {
         User user = null;
         try (Connection conn = DatabaseConnection.getConnection()) {

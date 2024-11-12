@@ -17,7 +17,6 @@ public class CreateAdminMain {
         // Mengatur role sebagai ADMIN
         Role adminRole = new Role();
         adminRole.setRoleId(1); // Sesuaikan ID dengan role "ADMIN" di database
-        adminRole.setRoleName("ADMIN");
         adminUser.setRole(adminRole);
 
         // Menyimpan admin ke database

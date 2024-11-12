@@ -1,17 +1,22 @@
-// Main.java
 package com.example;
 
 import com.example.controllers.AuthController;
+import com.example.controllers.UserController;
 import com.example.services.AuthService;
+import com.example.services.UserService;
 import com.example.views.LoginView;
+import com.example.views.MainMenuView;
+import com.example.views.UserListView;
 
 public class Main {
     public static void main(String[] args) {
         var authService = new AuthService();
-        var loginView = new LoginView(null); // Temporary null assignment
-        var authController = new AuthController(authService, loginView);
+        var userService = new UserService();
+        var loginView = new LoginView(null);
+        var userListView = new UserListView();
+        var mainMenuView = new MainMenuView(new UserController(userService, userListView, mainMenuView));
 
-        // Set the controller after it's instantiated
+        var authController = new AuthController(authService, loginView, mainMenuView);
         loginView.setAuthController(authController);
 
         loginView.showLoginScreen();

@@ -6,16 +6,16 @@ import com.example.services.UserService;
 
 public class CreateAdminMain {
     public static void main(String[] args) {
-        UserService userService = new UserService();
+        var userService = new UserService();
 
         // Membuat objek User baru untuk admin
-        User adminUser = new User();
+        var adminUser = new User();
         adminUser.setUsername("admin");
         adminUser.setPassword("123"); // Pastikan password cukup kuat dalam produksi
         adminUser.setEmail("admin@example.com");
 
         // Mengatur role sebagai ADMIN
-        Role adminRole = new Role();
+        var adminRole = new Role();
         adminRole.setRoleId(1); // Sesuaikan ID dengan role "ADMIN" di database
         adminUser.setRole(adminRole);
 
