@@ -1,9 +1,10 @@
 package com.example.services;
 
-import com.example.models.Role;
 import com.example.models.User;
 import com.example.utils.DatabaseConnection;
 import com.example.utils.PasswordUtils;
+import com.example.utils.UserUtils;
+import com.example.utils.RoleUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,117 +14,87 @@ public class UserService {
 
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "SELECT * FROM users";
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+        var query = "SELECT * FROM users";
+
+        try (var conn = DatabaseConnection.getConnection();
+             var stmt = conn.createStatement();
+             var rs = stmt.executeQuery(query)) {
+
             while (rs.next()) {
-                User user = new User();
-                user.setUserId(rs.getInt("user_id"));
-                user.setUsername(rs.getString("username"));
-                user.setEmail(rs.getString("email"));
-                // Assuming role is fetched here
-                user.setRole(getRoleById(rs.getInt("role_id")));
-                users.add(user);
+                users.add(UserUtils.mapResultSetToUser(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error fetching all users: " + e.getMessage());
         }
         return users;
     }
 
     public void createUser(User user) {
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "INSERT INTO users (username, password, email, role_id) VALUES (?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(query);
+        var query = "INSERT INTO users (username, password, email, role_id) VALUES (?, ?, ?, ?)";
+
+        try (var conn = DatabaseConnection.getConnection();
+             var stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1, user.getUsername());
             stmt.setString(2, PasswordUtils.encryptPassword(user.getPassword()));
             stmt.setString(3, user.getEmail());
             stmt.setInt(4, user.getRole().getRoleId());
             stmt.executeUpdate();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error creating user: " + e.getMessage());
         }
     }
 
     public int getRoleIdByName(String roleName) {
-        int roleId = -1; // Nilai default jika role tidak ditemukan
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "SELECT role_id FROM role WHERE role_name = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, roleName);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                roleId = rs.getInt("role_id");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return roleId;
+        return RoleUtils.getRoleIdByName(roleName);
     }
 
     public User getUserById(int userId) {
-        User user = null;
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "SELECT * FROM users WHERE user_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
+        var query = "SELECT * FROM users WHERE user_id = ?";
+        try (var conn = DatabaseConnection.getConnection();
+             var stmt = conn.prepareStatement(query)) {
+
             stmt.setInt(1, userId);
-            ResultSet rs = stmt.executeQuery();
+            var rs = stmt.executeQuery();
+
             if (rs.next()) {
-                user = new User();
-                user.setUserId(rs.getInt("user_id"));
-                user.setUsername(rs.getString("username"));
-                user.setEmail(rs.getString("email"));
-                user.setRole(getRoleById(rs.getInt("role_id")));
+                return UserUtils.mapResultSetToUser(rs);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error fetching user by ID: " + e.getMessage());
         }
-        return user;
+        return null;
     }
 
     public void updateUser(User user) {
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "UPDATE users SET username = ?, password = ?, email = ?, role_id = ? WHERE user_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
+        var query = "UPDATE users SET username = ?, password = ?, email = ?, role_id = ? WHERE user_id = ?";
+
+        try (var conn = DatabaseConnection.getConnection();
+             var stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1, user.getUsername());
             stmt.setString(2, PasswordUtils.encryptPassword(user.getPassword()));
             stmt.setString(3, user.getEmail());
             stmt.setInt(4, user.getRole().getRoleId());
             stmt.setInt(5, user.getUserId());
             stmt.executeUpdate();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error updating user: " + e.getMessage());
         }
     }
 
     public void deleteUser(int userId) {
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "DELETE FROM users WHERE user_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
+        var query = "DELETE FROM users WHERE user_id = ?";
+        try (var conn = DatabaseConnection.getConnection();
+             var stmt = conn.prepareStatement(query)) {
+
             stmt.setInt(1, userId);
             stmt.executeUpdate();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error deleting user: " + e.getMessage());
         }
     }
-
-    private Role getRoleById(int roleId) {
-        Role role = null;
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "SELECT * FROM role WHERE role_id = ?";  // Ubah "roles" ke "role"
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, roleId);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                role = new Role();
-                role.setRoleId(rs.getInt("role_id"));
-                role.setRoleName(rs.getString("role_name"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return role;
-    }
-
 }
