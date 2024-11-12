@@ -8,9 +8,10 @@ import com.example.views.LoginView;
 public class Main {
     public static void main(String[] args) {
         var authService = new AuthService();
-        var loginView = new LoginView(null);
+        var loginView = new LoginView(null); // Temporary null assignment
         var authController = new AuthController(authService, loginView);
 
+        // Set the controller after it's instantiated
         loginView.setAuthController(authController);
 
         loginView.showLoginScreen();
