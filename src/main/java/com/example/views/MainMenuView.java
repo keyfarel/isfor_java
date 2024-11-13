@@ -1,5 +1,6 @@
 package com.example.views;
 
+import com.example.controllers.LetterController;
 import com.example.controllers.UserController;
 
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class MainMenuView {
     private final UserController userController;
 
-    public MainMenuView(UserController userController) {
+    public MainMenuView(UserController userController, LetterController letterController) {
         this.userController = userController;
     }
 

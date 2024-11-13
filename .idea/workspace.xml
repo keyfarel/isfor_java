@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2aeea2ab-baa2-493b-9512-38ad6b830b32" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controllers/LetterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/models/Letter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/models/LetterStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/services/LetterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/services/LetterServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/views/LetterListView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/views/MainMenuViewUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/services/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/services/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controllers/AuthController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +34,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "KhalidFinny"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/keyfarel/isfor_java.git",
+    "accountId": "0a0e0bc2-55fe-410f-8b7d-c406a8b3b215"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2oQ2e3OVyQaKplWioNPqKMjlLxH" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,6 +62,7 @@
     "Application.App.executor": "Run",
     "Application.CreateAdminMain.executor": "Run",
     "Application.Main.executor": "Run",
+    "Database Script.isfor_java.sql.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -51,9 +76,17 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ],
+    "RunConfigurationTargetLRU": [
+      "d2121840-2272-4aea-ae9a-7306fd70003b"
+    ]
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager">
     <configuration name="CreateAdminMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.CreateAdminMain" />
       <module name="isfor_java" />
@@ -80,6 +113,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="isfor_java.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/database/isfor_java.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="d2121840-2272-4aea-ae9a-7306fd70003b" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -90,8 +129,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
       </set>
     </attachedChunks>
   </component>
@@ -105,6 +144,7 @@
       <updated>1730787573791</updated>
       <workItem from="1730787574854" duration="2870000" />
       <workItem from="1731421844757" duration="6950000" />
+      <workItem from="1731458358266" duration="2269000" />
     </task>
     <servers />
   </component>

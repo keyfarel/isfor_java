@@ -21,7 +21,21 @@ public class CreateAdminMain {
 
         // Menyimpan admin ke database
         userService.createUser(adminUser);
-
         System.out.println("Admin baru berhasil dibuat.");
+
+        // Membuat objek User baru untuk user biasa
+        var regularUser = new User();
+        regularUser.setUsername("user");
+        regularUser.setPassword("user123"); // Pastikan password cukup kuat dalam produksi
+        regularUser.setEmail("user@example.com");
+
+        // Mengatur role sebagai USER
+        var userRole = new Role();
+        userRole.setRoleId(2); // Sesuaikan ID dengan role "USER" di database
+        regularUser.setRole(userRole);
+
+        // Menyimpan regular user ke database
+        userService.createUser(regularUser);
+        System.out.println("User biasa baru berhasil dibuat.");
     }
 }
