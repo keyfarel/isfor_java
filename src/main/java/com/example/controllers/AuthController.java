@@ -1,6 +1,5 @@
 package com.example.controllers;
 
-import com.example.models.User;
 import com.example.services.AuthService;
 import com.example.views.LoginView;
 import com.example.views.MainMenuView;
@@ -17,7 +16,7 @@ public class AuthController {
     }
 
     public void handleLogin(String username, String password) {
-        User user = authService.login(username, password);
+        var user = authService.login(username, password);
         if (user != null) {
             System.out.println("Login successful for user: " + user.getUsername());
 

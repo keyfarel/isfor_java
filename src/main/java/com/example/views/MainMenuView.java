@@ -12,7 +12,7 @@ public class MainMenuView {
     }
 
     public int showAdminMenu() {
-        Scanner scanner = new Scanner(System.in);
+        var scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Admin Menu:");
             System.out.println("1. View All Users");
@@ -21,7 +21,7 @@ public class MainMenuView {
             System.out.println("4. Delete User");
             System.out.println("5. Logout");
             System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
+            var choice = scanner.nextInt();
 
             switch (choice) {
                 case 1 -> userController.viewUsers();
@@ -38,10 +38,10 @@ public class MainMenuView {
     }
 
     public void showUserMenu() {
-        Scanner scanner = new Scanner(System.in);
+        var scanner = new Scanner(System.in);
         System.out.println("User Menu:");
         System.out.println("1. Logout");
-        int choice = scanner.nextInt();
+        var choice = scanner.nextInt();
         if (choice == 1) {
             userController.logout();
         }

@@ -14,8 +14,6 @@ public class Main {
         var userService = new UserService();
         var loginView = new LoginView(null);
         var userListView = new UserListView();
-
-        // Buat UserController tanpa mainMenuView dulu
         var userController = new UserController(userService, userListView, null);
 
         // Inisialisasi MainMenuView setelah userController dibuat

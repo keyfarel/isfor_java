@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 public class RoleUtils {
 
-    // Mengambil Role berdasarkan ID dari database
     public static Role getRoleById(int roleId) {
         var query = "SELECT * FROM role WHERE role_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -27,7 +26,6 @@ public class RoleUtils {
         return null;
     }
 
-    // Mengambil Role ID berdasarkan nama role
     public static int getRoleIdByName(String roleName) {
         var query = "SELECT role_id FROM role WHERE role_name = ?";
         try (Connection conn = DatabaseConnection.getConnection();

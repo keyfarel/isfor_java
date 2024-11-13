@@ -1,4 +1,3 @@
-// LoginView.java
 package com.example.views;
 
 import com.example.controllers.AuthController;
@@ -15,11 +14,11 @@ public class LoginView {
     }
 
     public void showLoginScreen() {
-        Scanner scanner = new Scanner(System.in);
+        var scanner = new Scanner(System.in);
         System.out.print("Enter Username: ");
-        String username = scanner.nextLine();
+        var username = scanner.nextLine();
         System.out.print("Enter Password: ");
-        String password = scanner.nextLine();
+        var password = scanner.nextLine();
 
         authController.handleLogin(username, password);
     }

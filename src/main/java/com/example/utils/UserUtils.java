@@ -1,6 +1,5 @@
 package com.example.utils;
 
-import com.example.models.Role;
 import com.example.models.User;
 
 import java.sql.ResultSet;

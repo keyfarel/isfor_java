@@ -7,9 +7,9 @@ public class PasswordUtils {
 
     public static String encryptPassword(String password) {
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            var md = MessageDigest.getInstance("SHA-256");
             byte[] hash = md.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
+            var hexString = new StringBuilder();
             for (byte b : hash) {
                 hexString.append(String.format("%02x", b));
             }
@@ -20,8 +20,7 @@ public class PasswordUtils {
     }
 
     public static boolean verifyPassword(String inputPassword, String encryptedPassword) {
-        // Hash inputPassword dan bandingkan dengan encryptedPassword
-        String hashedInput = encryptPassword(inputPassword);
+        var hashedInput = encryptPassword(inputPassword);
         return hashedInput.equals(encryptedPassword);
     }
 }

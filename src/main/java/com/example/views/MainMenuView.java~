@@ -11,7 +11,7 @@ public class MainMenuView {
         this.userController = userController;
     }
 
-    public void showAdminMenu() {
+    public int showAdminMenu() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Admin Menu:");
@@ -30,7 +30,7 @@ public class MainMenuView {
                 case 4 -> userController.deleteUser();
                 case 5 -> {
                     System.out.println("Logging out...");
-                    return;
+                    return -1;  // Signal for logout
                 }
                 default -> System.out.println("Invalid option. Try again.");
             }
@@ -38,8 +38,12 @@ public class MainMenuView {
     }
 
     public void showUserMenu() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("User Menu:");
         System.out.println("1. Logout");
-        userController.logout();
+        int choice = scanner.nextInt();
+        if (choice == 1) {
+            userController.logout();
+        }
     }
 }

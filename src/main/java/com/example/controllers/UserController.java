@@ -27,7 +27,7 @@ public class UserController {
     }
 
     public void addUser() {
-        User newUser = new User();
+        var newUser = new User();
 
         System.out.print("Enter Username: ");
         newUser.setUsername(scanner.nextLine());
@@ -39,11 +39,11 @@ public class UserController {
         newUser.setEmail(scanner.nextLine());
 
         System.out.print("Enter Role (ADMIN/USER): ");
-        String roleName = scanner.nextLine().toUpperCase();
+        var roleName = scanner.nextLine().toUpperCase();
         int roleId = userService.getRoleIdByName(roleName);
 
         if (roleId != -1) {
-            Role role = new Role();
+            var role = new Role();
             role.setRoleId(roleId);
             role.setRoleName(roleName);
             newUser.setRole(role);
@@ -61,7 +61,7 @@ public class UserController {
         int userId = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
-        User existingUser = userService.getUserById(userId);
+        var existingUser = userService.getUserById(userId);
         if (existingUser != null) {
             System.out.print("Enter new Username: ");
             existingUser.setUsername(scanner.nextLine());
@@ -81,7 +81,7 @@ public class UserController {
 
     public void deleteUser() {
         System.out.print("Enter User ID to delete: ");
-        int userId = scanner.nextInt();
+        var userId = scanner.nextInt();
 
         userService.deleteUser(userId);
         System.out.println("User berhasil dihapus.");

@@ -14,7 +14,15 @@ public class Main {
         var userService = new UserService();
         var loginView = new LoginView(null);
         var userListView = new UserListView();
-        var mainMenuView = new MainMenuView(new UserController(userService, userListView, mainMenuView));
+
+        // Buat UserController tanpa mainMenuView dulu
+        var userController = new UserController(userService, userListView, null);
+
+        // Inisialisasi MainMenuView setelah userController dibuat
+        var mainMenuView = new MainMenuView(userController);
+
+        // Set mainMenuView ke userController
+        userController.setMainMenuView(mainMenuView);
 
         var authController = new AuthController(authService, loginView, mainMenuView);
         loginView.setAuthController(authController);
